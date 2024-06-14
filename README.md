@@ -1,0 +1,1 @@
+# gh-action-authorized-contributors
