@@ -1,0 +1,29 @@
+name: Authorized Contributors
+author: Riad Krim
+description: |-
+  A Github action that checks commits against authorized contributors
+
+inputs:
+  check_author:
+    description: checkAuthor
+    required: false
+    default: "true"
+
+  check_committer:
+    description: checkCommitter
+    required: false
+    default: "false"
+
+  contributors_file:
+    description: authorized Contributors
+    required: true
+    default: "CONTRIBUTORS"
+
+  contributors_mapping_file:
+    description: .mailmap
+    required: false
+    default: ".mailmap"
+
+runs:
+  using: node20
+  main: action/index.js

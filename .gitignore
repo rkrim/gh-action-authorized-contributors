@@ -1,0 +1,10 @@
+### Project ###
+resources/
+node_modules/
+
+
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
