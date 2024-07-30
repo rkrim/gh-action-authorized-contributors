@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+COLOR_RED='\033[0;31m'
+COLOR_RESET='\033[0m'
+
 # Check Commits from command line arguments
 if [ $# -gt 0 ]; then
     COMMITS="$@"
@@ -9,6 +12,10 @@ fi
 
 # Check authorized contributors
 AUTHORIZED_CONTRIBUTORS_FILE="authorized-contributors"
+if [ ! -r "$AUTHORIZED_CONTRIBUTORS_FILE" ]; then
+  echo "${COLOR_RED}Contributor file not found.$COLOR_RESET"
+  exit 1
+fi
 authorized_contributors="$(grep -v '^#' "${AUTHORIZED_CONTRIBUTORS_FILE}")"
 
 # Display Process Input
@@ -19,9 +26,6 @@ echo "----------------------------------------"
 echo "LIST OF COMMITS TO CHECK AGAINST AUTHORIZATION:"
 echo "$COMMITS"
 echo "----------------------------------------"
-
-COLOR_RED='\033[0;31m'
-COLOR_RESET='\033[0m'
 
 
 # Process commits for validation
