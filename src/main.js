@@ -21,7 +21,7 @@ async function run() {
 
 
         const src = __dirname
-        await exec.exec("${src}/check-authorized-contributors.sh")
+        await exec.exec(`${src}/check-authorized-contributors.sh`)
     } catch (error) {
         core.setFailed(error.message)
     }
