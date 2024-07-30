@@ -18,7 +18,10 @@ async function run() {
     try {
         const checkAuthor = core.getInput("check_author")
         console.log(`checkAuthor: ${checkAuthor}`)
-        await exec.exec("action/check-authorized-contributors.sh")
+
+
+        const src = __dirname
+        await exec.exec("${src}/check-authorized-contributors.sh")
     } catch (error) {
         core.setFailed(error.message)
     }
