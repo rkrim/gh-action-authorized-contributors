@@ -4,6 +4,16 @@ description: |-
   A Github action that checks commits against authorized contributors
 
 inputs:
+  base_branch:
+    description: Git base branch to compare with
+    required: false
+    default: "main"
+
+  head_branch:
+    description: Git head branch to compare with
+    required: false
+    default: "main"
+
   check_author:
     description: checkAuthor
     required: false

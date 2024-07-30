@@ -7,7 +7,7 @@ COLOR_RESET='\033[0m'
 if [ $# -gt 0 ]; then
     COMMITS="$@"
 else
-    COMMITS=$(git log origin/main..HEAD --pretty=format:"%H")
+    COMMITS=$(git log main..HEAD --pretty=format:"%H")
 fi
 
 # Check authorized contributors
