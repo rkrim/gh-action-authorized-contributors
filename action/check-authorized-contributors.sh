@@ -40,9 +40,10 @@ for COMMIT in $COMMITS; do
     echo "> Committer: $COMMITTER_DETAILS"
 
     # Check if the author is listed in the authorized-contributors list
-    if !(echo "$authorized_contributors" | grep -q "^${AUTHOR_DETAILS}$") || 
-        !(echo "$authorized_contributors" | grep -q "^${COMMITTER_DETAILS}$"); then
-        if [[ "${TERM}" =~ ^(xterm-?.*|screen|rxvt|linux|vt100|vt220|vt102)$ || "$GITHUB_ACTIONS" == "true" ]]; then
+    if ! (echo "$authorized_contributors" | grep -q "^${AUTHOR_DETAILS}$") || \
+       ! (echo "$authorized_contributors" | grep -q "^${COMMITTER_DETAILS}$"); then
+        if [[ "${TERM}" =~ ^(xterm-?.*|screen|rxvt|linux|vt100|vt220|vt102)$ ]] || \
+           [[ "$GITHUB_ACTIONS" == "true" ]]; then
             echo -e "${COLOR_RED}Changes by author or commiter are not authorized.$COLOR_RESET"
             echo -e "${COLOR_RED}Please, check and/or update informations to '$AUTHORIZED_CONTRIBUTORS_FILE'.$COLOR_RESET"
             echo -e "${COLOR_RED}Then, Create a pull request to grant authorization.$COLOR_RESET"
